@@ -1,2 +1,3 @@
 # .vimrc
-my own vimrc
+
+Description: My own .vimrc
