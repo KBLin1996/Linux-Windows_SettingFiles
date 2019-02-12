@@ -75,3 +75,6 @@ function ToUTF8()
     endif
     let &ff="unix"
 endfunction
+
+let mapleader = "\<Space>"
+nnoremap <leader>p oimport pdb; pdb.set_trace()<Esc>
