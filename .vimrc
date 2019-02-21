@@ -1,11 +1,12 @@
 set number
 set t_Co=256
 set cursorline
-hi CursorLine cterm=underline
 set nocompatible
 set ruler
 set hlsearch
+hi CursorLine cterm=underline
 hi Search cterm=none ctermbg=darkblue ctermfg=white
+hi CursorLineNr cterm=none ctermfg=green
 set tabstop=4
 set softtabstop=4
 set confirm
