@@ -1,3 +1,3 @@
 # .vimrc
 
-**Description:** My own .vimrc
+**Description:** Put the "color" directory under your own .vim
