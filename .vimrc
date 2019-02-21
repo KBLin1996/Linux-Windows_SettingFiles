@@ -4,15 +4,18 @@ set cursorline
 set nocompatible
 set ruler
 set hlsearch
-hi CursorLine cterm=underline
-hi Search cterm=none ctermbg=darkblue ctermfg=white
-hi CursorLineNr cterm=none ctermfg=green
 set tabstop=4
 set softtabstop=4
 set confirm
 set history=500
 set laststatus=2
 set statusline=[%{expand('%:p')}][%{strlen(&fenc)?&fenc:&enc},\ %{&ff},\ %{strlen(&filetype)?&filetype:'plain'}]%{FileSize()}%{IsBinary()}%=%c,%l/%L\ [%3p%%]
+
+colorscheme candycode
+
+hi CursorLine cterm=underline
+hi Search cterm=none ctermbg=darkblue ctermfg=white
+hi CursorLineNr cterm=none ctermfg=green
 
 function IsBinary()
     if (&binary == 0)
