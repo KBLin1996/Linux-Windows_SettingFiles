@@ -1,17 +1,36 @@
 set number
 set t_Co=256
-set cursorline
+set showcmd
+set showmode
+set linebreak
+set autowrite
+set autoindent
+set smartindent
 set nocompatible
+set cursorline
+set wrap
 set ruler
 set hlsearch
-set tabstop=4
+set expandtab
 set softtabstop=4
+set shiftwidth=4
 set confirm
 set history=500
 set laststatus=2
-set statusline=[%{expand('%:p')}][%{strlen(&fenc)?&fenc:&enc},\ %{&ff},\ %{strlen(&filetype)?&filetype:'plain'}]%{FileSize()}%{IsBinary()}%=%c,%l/%L\ [%3p%%]
+set clipboard=unnamedplus
+set fileencodings=utf-8,utf-16,big5,gb2312,gbk,gb18030,euc-jp,euc-kr,latin1
+set encoding=utf-8
 
 colorscheme candycode
+set statusline=%#filepath#[%{expand('%:p')}]%#filetype#[%{strlen(&fenc)?&fenc:&enc},\ %{&ff},\ %{strlen(&filetype)?         &filetype:'plain'}]%#filesize#%{FileSize()}%{IsBinary()}%=%#position#%c,%l/%L\ [%3p%%]
+
+if has("autocmd")
+    autocmd BufRead *.txt set tw=78
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal g'\"" |
+    \ endif
+endif
 
 hi CursorLine cterm=underline
 hi Search cterm=none ctermbg=darkblue ctermfg=white
@@ -39,34 +58,20 @@ function FileSize()
     endif
 endfunction
 
-set statusline=%#filepath#[%{expand('%:p')}]%#filetype#[%{strlen(&fenc)?&fenc:&enc},\ %{&ff},\ %{strlen(&filetype)?&filetype:'plain'}]%#filesize#%{FileSize()}%{IsBinary()}%=%#position#%c,%l/%L\ [%3p%%]
-
 hi filepath cterm=none ctermbg=238 ctermfg=40
 hi filetype cterm=none ctermbg=238 ctermfg=45
 hi filesize cterm=none ctermbg=238 ctermfg=225
 hi position cterm=none ctermbg=238 ctermfg=228
 
-set statusline=%#filepath#[%{expand('%:p')}]%#filetype#[%{strlen(&fenc)?&fenc:&enc},\ %{&ff},\ %{strlen(&filetype)?&filetype:'plain'}]%#filesize#%{FileSize()}%{IsBinary()}%=%#position#%c,%l/%L\ [%3p%%]
-
 hi filepath cterm=none ctermbg=238 ctermfg=40
 hi filetype cterm=none ctermbg=238 ctermfg=45
 hi filesize cterm=none ctermbg=238 ctermfg=225
 hi position cterm=none ctermbg=238 ctermfg=228
-
-set showcmd
-set showmode
-set wrap
-set autowrite
-set mouse=a
 
 if has("multi_byte")
-
 else
     echoerr "If +multi_byte is not included, you should compile Vim with big features."
 endif
-
-set fileencodings=utf-8,utf-16,big5,gb2312,gbk,gb18030,euc-jp,euc-kr,latin1
-set encoding=utf-8
 
 map <C-j> :call ToUTF8()<CR>
 map! <C-j> <Esc>:call ToUTF8()<CR>
@@ -79,14 +84,3 @@ function ToUTF8()
     endif
     let &ff="unix"
 endfunction
-
-let mapleader = "\<Space>"
-nnoremap <leader>p oimport pdb; pdb.set_trace()<Esc>
-
-if has("autocmd")
-    autocmd BufRead *.txt set tw=78
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal g'\"" |
-    \ endif
-endif
