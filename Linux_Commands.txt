@@ -1,0 +1,56 @@
+【依時間刪除多個檔案】
+-mtime or -mmin filename : 指定檔案的最後 [修改時間]（modification time），單位為天或是分鐘。
+-atime or -amin filename : 指定檔案的最後 [存取時間]（access time），單位為天或是分鐘。
+-ctime or -cmin filename : 指定檔案 [狀態相關資訊] 最後修改的時間（status time），單位為天或是分鐘。
+
+find . -mtime 10 : 找尋 [剛好10天之前] 被修改的檔案。
+find . -mtime -10 : 找尋 [近10天內] 被修改的檔案。
+find . -mtime +10 : 找尋 [10天之前] 被修改的檔案。
+
+------------------Examples------------------
+1. find ./ -mmin -450 -path "./ucfunnel_ctr*" => 找尋450分鐘內 "./ucfunnel_ctr"開頭 被修改的檔案
+2. find ./ -mmin +420 -path "./ucfunnel_wp*" => 找尋距離現在至少450分鐘內 "./ucfunnel_wp"開頭 被修改的檔案
+3. find ./ -type d -mtime +90 -prune -exec rm -rf {} \; => 如果要刪除的話，其實也可以直接使用-delete，但-exec就是比較彈性可以做更多變化。
+4. find ./ -mtime +5 -delete => 刪除距離現在至少5天之前 "./ucfunnel_wp"開頭 被修改的檔案
+
+【Git Commands】
+1. git status => 列出當前目錄各個git tracking檔案add, commit等的狀態
+2. git log => 列出當前使用的git commit版本
+3. git commit --amend => 在當前已繳交的目錄上做commit log或是程式碼的修正繳交
+4. push流程 => (1) git add
+               (2) git commit or 已commit過的話 git commit --amend
+               (3) git push origin ... => Ex: git push origin HEAD:refs/for/master
+               (4) 有Merge Conflict的話要解
+               (5) git pull rebase
+               (6) git pull
+[Note] (5)和(6)如果平常就有看到別人Merge的話就可以隨時做使用當前版本的更新
+
+【常用Linux Commands】
+1. ls -ltr => 依時間刪除多個檔案
+2. cp -p => 拷貝檔案並連同最後存取日期一起
+3. cp /dev/null (filename, Ex: nohup.out) => 清空該filename的nohup背景執行輸出檔
+
+【Visual Studio Code刪除空行】
+在替換查找界面輸入空行對應的正則表達式^\s*(?=\r?$)\n並Alt+R選擇對應正則表達式查找模式，批量全部替換即可完成需求。具體如下：
+1.打開替換界面，在Find界面輸入^\s*(?=\r?$)\n
+2.選擇Use Regular Expression(或快捷鍵Alt+R)進入正則表達式模式
+3.選擇Replace All(Ctrl+Alt+Enter)批量替換全部完成操作
+
+做一個能夠顯示執行中程式碼的功能
+
+【Setting .bashrc Short Cuts】
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+alias open='vim -o `fzf`'
+
+# Access conda environment
+alias kb='source activate kb'
+
+# Git commands
+alias commit='git commit'
+alias amend='git commit --amend'
+alias push='git push origin HEAD:refs/for/master'
+alias status='git status'
+alias log='git log'
+alias pull='git pull'
+alias rebase='git pull --rebase'
+alias cnt='ls -l|grep "^-"| wc -l'
