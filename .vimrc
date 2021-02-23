@@ -95,6 +95,8 @@ call vundle#begin()
     Plugin 'preservim/nerdtree'
     Plugin 'Yggdroot/indentLine'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 
