@@ -12,8 +12,12 @@
 # .bashrc
 
 **Description**
-
 * All **Alias** settings for **Linux** (including some System, Git, and Docker shortcut settings)<br><br>
+
+# Linux_Commands.txt
+
+**Description**
+* Some useful **Linux** commands<br><br>
 
 # Microsoft_PowerShell_Alias.ps1
 
