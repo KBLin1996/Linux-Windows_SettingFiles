@@ -12,4 +12,5 @@
 # Microsoft_PowerShell_Alias.ps1
 
 **Description**
+
 All **Alias** settings for **Windows PowerShell** (including some System, Git, and Docker shortcut settings).
