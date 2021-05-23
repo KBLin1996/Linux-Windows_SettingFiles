@@ -9,8 +9,14 @@
   
 ![image](https://github.com/KBLin1996/.vimrc/blob/master/preview.png)
 
+# .bashrc
+
+**Description**
+
+* All **Alias** settings for **Linux** (including some System, Git, and Docker shortcut settings)
+
 # Microsoft_PowerShell_Alias.ps1
 
 **Description**
 
-All **Alias** settings for **Windows PowerShell** (including some System, Git, and Docker shortcut settings).
+* All **Alias** settings for **Windows PowerShell** (including some System, Git, and Docker shortcut settings)
