@@ -132,24 +132,29 @@ cd() { if [[ $@ == "..." ]]; then command cd ..;cd ..;
        elif [[ $@ == "....." ]]; then command cd ..;cd ..;cd ..; cd ..;
        else command cd "$@"; fi; }
 
-# Access conda environment
-#alias kb='source activate kb'
+# Access Miniconda
+alias kb='conda activate kb'
 
 # Git commands
-alias add='git add'
-alias commit='git commit'
-alias dif='git diff'
-alias amend='git commit --amend'
-alias push='git push origin HEAD:refs/for/master'
-alias status='git status'
 alias log='git log'
+alias dif='git diff'
 alias pull='git pull'
-alias rebase='git pull --rebase'
-alias stash='git stash save'
+alias fetch='git fetch'
+alias branch='git branch'
+alias checkout='git checkout'
 alias pop='git stash pop'
 alias list='git stash list'
-alias checkout='git checkout'
+alias stash='git stash save'
+alias rebase='git pull --rebase'
+alias status='git status'
+alias add='git add'
 alias restore='git restore'
+alias commit='git commit'
+alias amend='git commit --amend'
+alias commitempty='git commit --allow-empty -m "Init Empty Commit"'
+alias push='git push'
+alias pushmaster='git push origin HEAD:refs/for/master'
+alias mybranch='git rev-parse --abbrev-ref HEAD'
 
 # Docker commands
 alias access='docker exec -it'
