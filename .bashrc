@@ -148,6 +148,7 @@ alias stash='git stash save'
 alias rebase='git pull --rebase'
 alias status='git status'
 alias add='git add'
+alias addall='git add -A'
 alias restore='git restore'
 alias commit='git commit'
 alias amend='git commit --amend'
@@ -171,4 +172,5 @@ alias stop='docker stop'
 alias tag='docker tag'
 
 # Linux cammands
+alias la='ls -a'
 alias cnt='ls -l|grep "^-"| wc -l'
