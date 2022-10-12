@@ -3,7 +3,7 @@
 **Description**  
 1. Install VundleVim/Vundle.vim for third-party extensions (Reference: https://github.com/VundleVim/Vundle.vim)  
   (1) Set up Vundle → git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim  
-  (2) Launch vim and run → :PluginInstall
+  (2) Launch vim and run → :PluginInstall or :BundleInstall
   
 **Preview**  
 
