@@ -132,30 +132,40 @@ cd() { if [[ $@ == "..." ]]; then command cd ..;cd ..;
        elif [[ $@ == "....." ]]; then command cd ..;cd ..;cd ..; cd ..;
        else command cd "$@"; fi; }
 
-# Access Miniconda
+# Linux cammands
+alias rm='rm -i'
+alias la='ls -a'
+alias ll='ls -l'
+alias cnt='ls -l|grep "^-"| wc -l'
+
+# Access conda environment
 alias kb='conda activate kb'
+alias deactivate='conda deactivate'
+alias envpath='echo $CONDA_PREFIX'
 
 # Git commands
-alias log='git log'
-alias dif='git diff'
-alias pull='git pull'
-alias fetch='git fetch'
-alias branch='git branch'
-alias checkout='git checkout'
-alias pop='git stash pop'
-alias list='git stash list'
-alias stash='git stash save'
-alias rebase='git pull --rebase'
-alias status='git status'
 alias add='git add'
 alias addall='git add -A'
-alias restore='git restore'
 alias commit='git commit'
-alias amend='git commit --amend'
 alias commitempty='git commit --allow-empty -m "Init Empty Commit"'
+alias amend='git commit --amend'
+alias dif='git diff'
+alias log='git log'
+alias status='git status'
+alias restore='git restore'
+alias branch='git branch'
+alias checkout='git checkout'
+alias mybranch='git rev-parse --abbrev-ref HEAD'
+alias stash='git stash save'
+alias pop='git stash pop'
+alias list='git stash list'
+alias fetch='git fetch'
+alias pull='git pull'
+alias rebase='git pull --rebase'
 alias push='git push'
 alias pushmaster='git push origin HEAD:refs/for/master'
-alias mybranch='git rev-parse --abbrev-ref HEAD'
+# push exist directory to github: git -C "directoryPath" init
+alias newrepo='gh repo create'
 
 # Docker commands
 alias access='docker exec -it'
@@ -170,7 +180,3 @@ alias showi='docker images'
 alias showc='docker ps'
 alias stop='docker stop'
 alias tag='docker tag'
-
-# Linux cammands
-alias la='ls -a'
-alias cnt='ls -l|grep "^-"| wc -l'
