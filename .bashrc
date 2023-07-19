@@ -126,11 +126,7 @@ alias open='vim -o `fzf`'
 # Access Linux setting files
 alias bashrc='vim ~/.bashrc'
 alias resource='source ~/.bashrc'
-alias vimrc='vim ~/.vimrc'
-cd() { if [[ $@ == "..." ]]; then command cd ..;cd ..;
-       elif [[ $@ == "...." ]]; then command cd ..;cd ..;cd ..;
-       elif [[ $@ == "....." ]]; then command cd ..;cd ..;cd ..; cd ..;
-       else command cd "$@"; fi; }
+alias vimrc='bash -l'
 
 # Linux cammands
 alias rm='rm -i'
@@ -143,6 +139,12 @@ alias kb='conda activate kb'
 alias deactivate='conda deactivate'
 alias envpath='echo $CONDA_PREFIX'
 
+# Linux commands
+cd() { if [[ $@ == "..." ]]; then command cd ..;cd ..;
+    elif [[ $@ == "...." ]]; then command cd ..;cd ..;cd ..;
+    elif [[ $@ == "....." ]]; then command cd ..;cd ..;cd ..; cd ..;
+    else command cd "$@"; fi; }
+
 # Git commands
 alias add='git add'
 alias addall='git add -A'
@@ -151,8 +153,12 @@ alias emptycommit='git commit --allow-empty -m "Init Empty Commit"'
 alias amend='git commit --amend'
 alias dif='git diff'
 alias log='git log'
+alias show='git show'
 alias status='git status'
-alias restore 'git restore --staged'
+alias reset='git reset'
+alias undo='git reset HEAD^'
+alias restore='git restore'
+alias clone='git clone'
 alias branch='git branch'
 alias checkout='git checkout'
 alias newbranch='git checkout -b'
@@ -160,13 +166,13 @@ alias mybranch='git rev-parse --abbrev-ref HEAD'
 alias stash='git stash save'
 alias pop='git stash pop'
 alias list='git stash list'
-alias clean='git stash clear'
 alias fetch='git fetch -p'
+alias submodule='git submodule add'
 alias pull='git pull'
 alias rebase='git pull --rebase'
 alias push='git push'
 alias pushmaster='git push origin HEAD:refs/for/master'
-# push exist directory to github: git -C "directoryPath" init
+# Push exist directory to github: git -C "directoryPath" init
 alias newrepo='gh repo create'
 
 # Docker commands
@@ -182,3 +188,12 @@ alias showi='docker images'
 alias showc='docker ps'
 alias stop='docker stop'
 alias tag='docker tag'
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\](\w)\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:(\w)$(parse_git_branch)\$ '
+fi
