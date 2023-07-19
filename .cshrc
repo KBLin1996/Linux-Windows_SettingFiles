@@ -10,6 +10,17 @@ bindkey '^R' i-search-back
 # Make backspace work in Vim
 stty erase '^?'
 
+# Auto-complete
+set complete
+# Don't beep at all...
+set nobeep
+# Autolist commands
+set autolist
+# Never ever autologout
+unset autologout
+# Enables colored output for embedded commands
+set color
+
 # Access Linux setting files
 alias cshrc 'vim ~/.cshrc'
 alias resource 'source ~/.cshrc'
