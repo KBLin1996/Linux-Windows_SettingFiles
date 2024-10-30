@@ -89,16 +89,16 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " Plugin Third Party Tools. Run :PluginInstall to install plugins
-call vundle#begin()
+"call plug#begin()
 
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'preservim/nerdtree'
-    Plugin 'Yggdroot/indentLine'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plugin 'junegunn/fzf.vim'
+"Plug 'VundleVim/Vundle.vim'
+"Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+"Plug 'Yggdroot/indentLine'
+"Plug 'tpope/vim-fugitive'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 
-call vundle#end()
+"call plug#end()
 
 " NerdTree Settings
 filetype plugin indent on
@@ -124,8 +124,8 @@ let &l:conceallevel = exists("g:indentLine_conceallevel") ? g:indentLine_conceal
 let g:indentLine_color_term = 239
 let g:indentLine_char_list = ['|']
 
+set pastetoggle=<C-p>
 
 " fugitive setting
 map :add :Gwrite<CR>
 map :who :Gblame<CR>
-
